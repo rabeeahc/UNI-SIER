@@ -9,7 +9,7 @@ function Logo() {
 
       <div>
         <h1 className="font-display text-lg font-semibold leading-tight tracking-tight text-sand-900 dark:text-white">
-          Campus Bridge
+          UNI-SIER
         </h1>
 
         <p className="text-xs font-medium tracking-wide text-sand-500 dark:text-sand-400">

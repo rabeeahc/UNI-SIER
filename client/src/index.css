@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
-  Campus Bridge design system.
+  Unisier design system.
   Tailwind v4 reads custom colors/fonts/radii declared here inside @theme
   and turns them into utility classes automatically - e.g. --color-coral-500
   below becomes usable as `bg-coral-500`, `text-coral-500`, `border-coral-500`.

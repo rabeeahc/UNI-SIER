@@ -56,7 +56,7 @@ function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-sand-200 py-6 text-sm text-sand-500 sm:flex-row dark:border-sand-800 dark:text-sand-500">
-          <p>© {new Date().getFullYear()} Campus Bridge. {t("footer.rights")}</p>
+          <p>© {new Date().getFullYear()} Unisier. {t("footer.rights")}</p>
           <p>{t("footer.madeBy")}</p>
         </div>
       </Container>

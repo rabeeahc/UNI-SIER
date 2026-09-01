@@ -1,4 +1,4 @@
-// Real translation dictionaries for Campus Bridge's UI chrome, homepage
+// Real translation dictionaries for UNI-SIER's UI chrome, homepage
 // journey checklists, guide list cards, campus/community categories, and
 // footer. Hand-written rather than a library like react-i18next since the
 // translation surface, while now large, is still static and finite.
@@ -34,6 +34,7 @@ export type TranslationKey =
   | "hero.trust"
   | "journey.title"
   | "journey.subtitle"
+  | "journey.prompt"
   | "guides.badge"
   | "guides.title"
   | "guides.subtitle"
@@ -105,6 +106,20 @@ export type TranslationKey =
   | "community.feature.recommendations.description"
   | "community.feature.marketplace.title"
   | "community.feature.marketplace.description"
+  | "campus.openInMaps"
+  | "campus.showOnMap"
+  | "campus.website"
+  | "common.contentInEnglish"
+  | "common.openLink"
+  | "common.linkPending"
+  | "community.groups.title"
+  | "community.groups.subtitle"
+  | "community.official.title"
+  | "community.buysell.title"
+  | "community.help.title"
+  | "community.help.body"
+  | "community.spaces.title"
+  | "community.spaces.subtitle"
   | "journey.accepted.title"
   | "journey.accepted.description"
   | "journey.accepted.item1.title"
@@ -184,7 +199,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "nav.community": "Community",
     "hero.badge": "Built by international students",
     "hero.title": "Everything you need to thrive as an international student.",
-    "hero.description": "From your admission letter to graduation, Campus Bridge helps international students navigate university life with trusted guides, local recommendations, and a supportive student community.",
+    "hero.description": "From your admission letter to graduation, UNI-SIER helps international students navigate university life with trusted guides, local recommendations, and a supportive student community.",
     "hero.badge.supporting": "Currently supporting Kocaeli University",
     "hero.badge.comingSoon": "More universities coming soon",
     "hero.cta.primary": "Get started",
@@ -192,6 +207,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "hero.trust": "Trusted by students building their future abroad.",
     "journey.title": "Where are you in your journey?",
     "journey.subtitle": "Choose your current stage and we'll guide you through the next steps.",
+    "journey.prompt": "Pick a stage above to unlock its checklist.",
     "guides.badge": "Student guides",
     "guides.title": "Everything you need to know.",
     "guides.subtitle": "Practical guides written for international students at Kocaeli University.",
@@ -201,7 +217,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "campus.map.title": "Kocaeli University, Umuttepe Campus",
     "community.badge": "Community",
     "community.title": "Meet other international students.",
-    "community.subtitle": "Campus Bridge is more than guides - it's a place to connect, ask questions, and share what you know with other students at Kocaeli University.",
+    "community.subtitle": "UNI-SIER is more than guides - it's a place to connect, ask questions, and share what you know with other students at Kocaeli University.",
     "footer.tagline": "Everything international students need to navigate life at Kocaeli University, in one place.",
     "footer.rights": "Built for Kocaeli University students.",
     "footer.madeBy": "Made by a student, for students.",
@@ -263,6 +279,20 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "community.feature.recommendations.description": "Crowd-sourced tips on restaurants, professors, and places to go.",
     "community.feature.marketplace.title": "Student marketplace",
     "community.feature.marketplace.description": "Buy, sell, or give away furniture, books, and essentials with other students.",
+    "campus.openInMaps": "Open in Maps",
+    "campus.showOnMap": "Show on map",
+    "campus.website": "Website",
+    "common.contentInEnglish": "Detailed listings are shown in English for now.",
+    "common.openLink": "Open",
+    "common.linkPending": "Link coming soon",
+    "community.groups.title": "Group chats & communities",
+    "community.groups.subtitle": "The fastest way to get answers and meet people - most of it happens before you even arrive.",
+    "community.official.title": "Official university accounts",
+    "community.buysell.title": "Buy, sell & swap",
+    "community.help.title": "Need help with something official?",
+    "community.help.body": "For visa, enrolment, or Erasmus questions, contact the International Relations Office (see the Campus page for details). For everything else - housing tips, what to buy, where to go - the student group chats are the fastest way to get an answer.",
+    "community.spaces.title": "Places to meet & study",
+    "community.spaces.subtitle": "Free spaces in İzmit where international students actually hang out.",
     "journey.accepted.title": "Accepted",
     "journey.accepted.description": "You've received your admission letter.",
     "journey.accepted.item1.title": "Accept your university offer",
@@ -340,7 +370,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "nav.community": "Topluluk",
     "hero.badge": "Uluslararası öğrenciler tarafından geliştirildi",
     "hero.title": "Uluslararası bir öğrenci olarak başarılı olmak için ihtiyacın olan her şey.",
-    "hero.description": "Kabul mektubundan mezuniyete kadar, Campus Bridge uluslararası öğrencilerin üniversite hayatında güvenilir rehberler, yerel öneriler ve destekleyici bir öğrenci topluluğuyla yol almasına yardımcı olur.",
+    "hero.description": "Kabul mektubundan mezuniyete kadar, UNI-SIER uluslararası öğrencilerin üniversite hayatında güvenilir rehberler, yerel öneriler ve destekleyici bir öğrenci topluluğuyla yol almasına yardımcı olur.",
     "hero.badge.supporting": "Şu anda Kocaeli Üniversitesi'ni destekliyoruz",
     "hero.badge.comingSoon": "Daha fazla üniversite yakında",
     "hero.cta.primary": "Başla",
@@ -348,6 +378,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "hero.trust": "Yurt dışında geleceğini inşa eden öğrenciler tarafından güveniliyor.",
     "journey.title": "Yolculuğunun neresindesin?",
     "journey.subtitle": "Mevcut aşamanı seç, sana bir sonraki adımlarda rehberlik edelim.",
+    "journey.prompt": "Kontrol listesini açmak için yukarıdan bir aşama seç.",
     "guides.badge": "Öğrenci rehberleri",
     "guides.title": "Bilmen gereken her şey.",
     "guides.subtitle": "Kocaeli Üniversitesi'ndeki uluslararası öğrenciler için hazırlanmış pratik rehberler.",
@@ -357,7 +388,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "campus.map.title": "Kocaeli Üniversitesi, Umuttepe Kampüsü",
     "community.badge": "Topluluk",
     "community.title": "Diğer uluslararası öğrencilerle tanış.",
-    "community.subtitle": "Campus Bridge rehberlerden daha fazlası - Kocaeli Üniversitesi'ndeki diğer öğrencilerle bağlantı kurabileceğin, soru sorabileceğin ve bilgi paylaşabileceğin bir yer.",
+    "community.subtitle": "UNI-SIER rehberlerden daha fazlası - Kocaeli Üniversitesi'ndeki diğer öğrencilerle bağlantı kurabileceğin, soru sorabileceğin ve bilgi paylaşabileceğin bir yer.",
     "footer.tagline": "Kocaeli Üniversitesi'nde uluslararası öğrencilerin ihtiyaç duyduğu her şey, tek bir yerde.",
     "footer.rights": "Kocaeli Üniversitesi öğrencileri için geliştirildi.",
     "footer.madeBy": "Bir öğrenci tarafından, öğrenciler için yapıldı.",
@@ -419,6 +450,20 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "community.feature.recommendations.description": "Restoranlar, hocalar ve gidilecek yerler hakkında öğrenci önerileri.",
     "community.feature.marketplace.title": "Öğrenci pazarı",
     "community.feature.marketplace.description": "Diğer öğrencilerle eşya, kitap ve ihtiyaçlarını al, sat veya bağışla.",
+    "campus.openInMaps": "Haritada aç",
+    "campus.showOnMap": "Haritada göster",
+    "campus.website": "Web sitesi",
+    "common.contentInEnglish": "Ayrıntılı liste şimdilik İngilizce olarak gösteriliyor.",
+    "common.openLink": "Aç",
+    "common.linkPending": "Bağlantı yakında",
+    "community.groups.title": "Grup sohbetleri ve topluluklar",
+    "community.groups.subtitle": "Cevap almanın ve insanlarla tanışmanın en hızlı yolu - çoğu daha sen gelmeden yaşanır.",
+    "community.official.title": "Resmi üniversite hesapları",
+    "community.buysell.title": "Al, sat ve takas et",
+    "community.help.title": "Resmi bir konuda yardım mı lazım?",
+    "community.help.body": "Vize, kayıt veya Erasmus soruları için Uluslararası İlişkiler Ofisi ile iletişime geç (ayrıntılar Kampüs sayfasında). Diğer her şey için - ev tavsiyeleri, ne alınır, nereye gidilir - öğrenci grup sohbetleri en hızlı yoldur.",
+    "community.spaces.title": "Buluşma ve çalışma mekanları",
+    "community.spaces.subtitle": "İzmit'te uluslararası öğrencilerin gerçekten takıldığı ücretsiz mekanlar.",
     "journey.accepted.title": "Kabul Edildim",
     "journey.accepted.description": "Kabul mektubunu aldın.",
     "journey.accepted.item1.title": "Üniversite teklifini kabul et",
@@ -496,7 +541,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "nav.community": "المجتمع",
     "hero.badge": "بُني بواسطة طلاب دوليين",
     "hero.title": "كل ما تحتاجه لتزدهر كطالب دولي.",
-    "hero.description": "من خطاب القبول وحتى التخرج، يساعدك Campus Bridge على التنقل في الحياة الجامعية من خلال أدلة موثوقة وتوصيات محلية ومجتمع طلابي داعم.",
+    "hero.description": "من خطاب القبول وحتى التخرج، يساعدك UNI-SIER على التنقل في الحياة الجامعية من خلال أدلة موثوقة وتوصيات محلية ومجتمع طلابي داعم.",
     "hero.badge.supporting": "ندعم حالياً جامعة كوجالي",
     "hero.badge.comingSoon": "المزيد من الجامعات قريباً",
     "hero.cta.primary": "ابدأ الآن",
@@ -504,6 +549,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "hero.trust": "موثوق من قبل الطلاب الذين يبنون مستقبلهم في الخارج.",
     "journey.title": "أين أنت في رحلتك؟",
     "journey.subtitle": "اختر مرحلتك الحالية وسنرشدك للخطوات التالية.",
+    "journey.prompt": "اختر مرحلة من الأعلى لفتح قائمتها.",
     "guides.badge": "أدلة الطلاب",
     "guides.title": "كل ما تحتاج معرفته.",
     "guides.subtitle": "أدلة عملية مكتوبة للطلاب الدوليين في جامعة كوجالي.",
@@ -513,7 +559,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "campus.map.title": "جامعة كوجالي، حرم أوموتتبه",
     "community.badge": "المجتمع",
     "community.title": "تعرف على طلاب دوليين آخرين.",
-    "community.subtitle": "Campus Bridge أكثر من مجرد أدلة - إنه مكان للتواصل وطرح الأسئلة ومشاركة ما تعرفه مع طلاب آخرين في جامعة كوجالي.",
+    "community.subtitle": "UNI-SIER أكثر من مجرد أدلة - إنه مكان للتواصل وطرح الأسئلة ومشاركة ما تعرفه مع طلاب آخرين في جامعة كوجالي.",
     "footer.tagline": "كل ما يحتاجه الطلاب الدوليون للتنقل في الحياة في جامعة كوجالي، في مكان واحد.",
     "footer.rights": "صُنع لطلاب جامعة كوجالي.",
     "footer.madeBy": "صُنع بواسطة طالب، من أجل الطلاب.",
@@ -575,6 +621,20 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "community.feature.recommendations.description": "نصائح من الطلاب حول المطاعم والأساتذة والأماكن التي يجب زيارتها.",
     "community.feature.marketplace.title": "سوق الطلاب",
     "community.feature.marketplace.description": "بيع وشراء أو التبرع بالأثاث والكتب والأساسيات مع طلاب آخرين.",
+    "campus.openInMaps": "افتح في الخرائط",
+    "campus.showOnMap": "اعرض على الخريطة",
+    "campus.website": "الموقع الإلكتروني",
+    "common.contentInEnglish": "التفاصيل معروضة بالإنجليزية في الوقت الحالي.",
+    "common.openLink": "فتح",
+    "common.linkPending": "الرابط قريباً",
+    "community.groups.title": "مجموعات الدردشة والمجتمعات",
+    "community.groups.subtitle": "أسرع طريقة للحصول على إجابات والتعرف على الناس - معظمها يحدث قبل وصولك.",
+    "community.official.title": "حسابات الجامعة الرسمية",
+    "community.buysell.title": "بيع وشراء وتبادل",
+    "community.help.title": "تحتاج مساعدة في أمر رسمي؟",
+    "community.help.body": "لأسئلة التأشيرة أو التسجيل أو الإيراسموس، تواصل مع مكتب العلاقات الدولية (التفاصيل في صفحة الحرم الجامعي). لكل شيء آخر - نصائح السكن، ماذا تشتري، أين تذهب - مجموعات دردشة الطلاب هي أسرع طريقة للحصول على إجابة.",
+    "community.spaces.title": "أماكن للقاء والدراسة",
+    "community.spaces.subtitle": "أماكن مجانية في إزميت يقضي فيها الطلاب الدوليون وقتهم فعلاً.",
     "journey.accepted.title": "تم القبول",
     "journey.accepted.description": "لقد استلمت خطاب القبول.",
     "journey.accepted.item1.title": "اقبل عرض الجامعة",
@@ -652,7 +712,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "nav.community": "Сообщество",
     "hero.badge": "Создано иностранными студентами",
     "hero.title": "Всё необходимое для успешной учёбы иностранному студенту.",
-    "hero.description": "От письма о зачислении до выпуска — Campus Bridge помогает иностранным студентам ориентироваться в университетской жизни с помощью надёжных гидов, местных рекомендаций и поддерживающего студенческого сообщества.",
+    "hero.description": "От письма о зачислении до выпуска — UNI-SIER помогает иностранным студентам ориентироваться в университетской жизни с помощью надёжных гидов, местных рекомендаций и поддерживающего студенческого сообщества.",
     "hero.badge.supporting": "Сейчас поддерживаем Университет Коджаэли",
     "hero.badge.comingSoon": "Другие университеты скоро",
     "hero.cta.primary": "Начать",
@@ -660,6 +720,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "hero.trust": "Нам доверяют студенты, строящие своё будущее за рубежом.",
     "journey.title": "На каком этапе вы находитесь?",
     "journey.subtitle": "Выберите свой текущий этап, и мы проведём вас через следующие шаги.",
+    "journey.prompt": "Выберите этап выше, чтобы открыть его чек-лист.",
     "guides.badge": "Гиды для студентов",
     "guides.title": "Всё, что нужно знать.",
     "guides.subtitle": "Практические гиды для иностранных студентов Университета Коджаэли.",
@@ -669,7 +730,7 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "campus.map.title": "Университет Коджаэли, кампус Умуттепе",
     "community.badge": "Сообщество",
     "community.title": "Познакомьтесь с другими иностранными студентами.",
-    "community.subtitle": "Campus Bridge — это больше, чем гиды: место для общения, вопросов и обмена знаниями с другими студентами Университета Коджаэли.",
+    "community.subtitle": "UNI-SIER — это больше, чем гиды: место для общения, вопросов и обмена знаниями с другими студентами Университета Коджаэли.",
     "footer.tagline": "Всё, что нужно иностранным студентам в Университете Коджаэли, в одном месте.",
     "footer.rights": "Создано для студентов Университета Коджаэли.",
     "footer.madeBy": "Сделано студентом для студентов.",
@@ -731,6 +792,20 @@ export const translations: Record<LanguageCode, Record<TranslationKey, string>> 
     "community.feature.recommendations.description": "Советы студентов о ресторанах, преподавателях и местах для посещения.",
     "community.feature.marketplace.title": "Студенческий маркетплейс",
     "community.feature.marketplace.description": "Покупайте, продавайте или отдавайте мебель, книги и необходимые вещи другим студентам.",
+    "campus.openInMaps": "Открыть на карте",
+    "campus.showOnMap": "Показать на карте",
+    "campus.website": "Сайт",
+    "common.contentInEnglish": "Подробные списки пока показаны на английском.",
+    "common.openLink": "Открыть",
+    "common.linkPending": "Ссылка скоро появится",
+    "community.groups.title": "Чаты и сообщества",
+    "community.groups.subtitle": "Самый быстрый способ получить ответы и познакомиться с людьми - многое происходит ещё до приезда.",
+    "community.official.title": "Официальные аккаунты университета",
+    "community.buysell.title": "Купить, продать, обменять",
+    "community.help.title": "Нужна помощь с официальным вопросом?",
+    "community.help.body": "По вопросам визы, зачисления или Erasmus обращайтесь в Отдел международных связей (подробности на странице «Кампус»). По всему остальному - советы по жилью, что купить, куда пойти - быстрее всего спросить в студенческих чатах.",
+    "community.spaces.title": "Места для встреч и учёбы",
+    "community.spaces.subtitle": "Бесплатные места в Измите, где действительно собираются иностранные студенты.",
     "journey.accepted.title": "Зачислен(а)",
     "journey.accepted.description": "Вы получили письмо о зачислении.",
     "journey.accepted.item1.title": "Подтвердите предложение университета",

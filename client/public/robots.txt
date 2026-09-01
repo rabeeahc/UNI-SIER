@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://campusbridge.app/sitemap.xml
+Sitemap: https://unisier.app/sitemap.xml

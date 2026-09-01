@@ -5,7 +5,7 @@ import { useState } from "react";
 // way to make "progress saved" actually true today - if/when a real
 // account system exists later, this hook is the one place to swap
 // localStorage for an API call.
-const STORAGE_KEY = "campus-bridge-checklist-progress";
+const STORAGE_KEY = "unisier-checklist-progress";
 
 type ProgressMap = Record<string, string[]>; // journeyId -> array of checked item titles
 

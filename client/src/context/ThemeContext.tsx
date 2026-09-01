@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { ThemeContext, type Theme } from "./theme-context";
 
-const STORAGE_KEY = "campus-bridge-theme";
+const STORAGE_KEY = "unisier-theme";
 
 // Figures out the starting theme: respects a previous choice saved in
 // localStorage, otherwise falls back to the user's OS-level preference.

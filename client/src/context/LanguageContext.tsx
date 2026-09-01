@@ -2,7 +2,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { LanguageContext } from "./language-context";
 import { translations, languages, type LanguageCode } from "../i18n/translations";
 
-const STORAGE_KEY = "campus-bridge-language";
+const STORAGE_KEY = "unisier-language";
 
 function getInitialLanguage(): LanguageCode {
   const saved = localStorage.getItem(STORAGE_KEY);

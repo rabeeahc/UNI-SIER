@@ -28,7 +28,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     // In production this is where you'd send the error to a monitoring
     // service (e.g. Sentry) - logging to console for now since there's no
     // monitoring service wired up yet.
-    console.error("Campus Bridge crashed:", error, info);
+    console.error("UNI-SIER crashed:", error, info);
   }
 
   render() {

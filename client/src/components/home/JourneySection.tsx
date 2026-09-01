@@ -5,12 +5,18 @@ import { journeys } from "../../data/journeys";
 import ChecklistItem from "./ChecklistItem";
 import { useChecklistProgress } from "../../hooks/useChecklistProgress";
 import { useLanguage } from "../../hooks/useLanguage";
+import { LockIcon } from "../ui/icons";
 
 function JourneySection() {
   // Tracked by stable journey.id, not the (now translated) title - titles
   // change when the language changes, which would silently break this
   // comparison and reset the selected card back to nothing.
-  const [selectedJourneyId, setSelectedJourneyId] = useState("accepted");
+  //
+  // Starts as null on purpose: the checklist panel stays locked until the
+  // student picks a stage above, so the section reads as an intentional
+  // "choose where you are" step rather than dumping the Accepted list on
+  // everyone by default.
+  const [selectedJourneyId, setSelectedJourneyId] = useState<string | null>(null);
   const { t } = useLanguage();
 
   const currentJourney = journeys.find((journey) => journey.id === selectedJourneyId);
@@ -31,7 +37,7 @@ function JourneySection() {
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
 
   return (
-    <section className="bg-sand-25 py-24 md:py-28 dark:bg-sand-950">
+    <section id="journey" className="scroll-mt-24 bg-sand-25 py-24 md:py-28 dark:bg-sand-950">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-4xl font-semibold tracking-tight text-sand-900 md:text-5xl dark:text-white">
@@ -55,8 +61,13 @@ function JourneySection() {
           ))}
         </div>
 
-        {currentJourney && (
-          <div className="ring-gradient mt-12 rounded-3xl border border-sand-200 bg-white/80 p-8 shadow-(--shadow-lift) backdrop-blur-sm md:p-10 dark:border-sand-700 dark:bg-sand-900/70">
+        {currentJourney ? (
+          // key on the journey id so the panel re-plays its entrance
+          // animation each time the student switches stages.
+          <div
+            key={currentJourney.id}
+            className="animate-rise ring-gradient mt-12 rounded-3xl border border-sand-200 bg-white/80 p-8 shadow-(--shadow-lift) backdrop-blur-sm md:p-10 dark:border-sand-700 dark:bg-sand-900/70"
+          >
             <div className="mb-8">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <h3 className="font-display text-3xl font-semibold text-sand-900 dark:text-white">
@@ -91,6 +102,15 @@ function JourneySection() {
                 />
               ))}
             </div>
+          </div>
+        ) : (
+          <div className="mt-12 flex flex-col items-center justify-center rounded-3xl border border-dashed border-sand-300 bg-white/40 px-8 py-16 text-center dark:border-sand-700 dark:bg-sand-900/30">
+            <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-sand-200 bg-white text-sand-400 shadow-(--shadow-soft) dark:border-sand-700 dark:bg-sand-800">
+              <LockIcon className="h-5 w-5" />
+            </span>
+            <p className="mt-5 max-w-sm text-sand-500 dark:text-sand-400">
+              {t("journey.prompt")}
+            </p>
           </div>
         )}
       </Container>

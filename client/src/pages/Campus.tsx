@@ -1,29 +1,52 @@
+import { lazy, Suspense, useCallback, useRef, useState, type ReactNode } from "react";
 import Container from "../components/ui/Container";
-import CategoryCard from "../components/ui/CategoryCard";
+import CampusCategory from "../components/campus/CampusCategory";
 import PageHeader from "../components/ui/PageHeader";
-import CampusMap from "../components/campus/CampusMap";
 import { useLanguage } from "../hooks/useLanguage";
+import { campusCategories } from "../data/campusPlaces";
 import {
   BuildingIcon,
   BookIcon,
   MapPinIcon,
   TagIcon,
+  UsersIcon,
+  HeartHandshakeIcon,
 } from "../components/ui/icons";
 
-function Campus() {
-  const { t } = useLanguage();
+// Leaflet is ~150 kB - only pull it in when someone actually opens Campus.
+const UniSierMap = lazy(() => import("../components/campus/UniSierMap"));
 
-  const categories = [
-    { key: "buildings", icon: <BuildingIcon />, title: t("campus.category.buildings.title"), description: t("campus.category.buildings.description") },
-    { key: "library", icon: <BookIcon />, title: t("campus.category.library.title"), description: t("campus.category.library.description") },
-    { key: "intlOffice", icon: <MapPinIcon />, title: t("campus.category.intlOffice.title"), description: t("campus.category.intlOffice.description") },
-    { key: "cafes", icon: <TagIcon />, title: t("campus.category.cafes.title"), description: t("campus.category.cafes.description") },
-    { key: "groceries", icon: <TagIcon />, title: t("campus.category.groceries.title"), description: t("campus.category.groceries.description") },
-    { key: "pharmacies", icon: <TagIcon />, title: t("campus.category.pharmacies.title"), description: t("campus.category.pharmacies.description") },
-    { key: "atms", icon: <TagIcon />, title: t("campus.category.atms.title"), description: t("campus.category.atms.description") },
-    { key: "mosques", icon: <MapPinIcon />, title: t("campus.category.mosques.title"), description: t("campus.category.mosques.description") },
-    { key: "busStops", icon: <MapPinIcon />, title: t("campus.category.busStops.title"), description: t("campus.category.busStops.description") },
-  ];
+// Icon per category id. Kept here (JSX) rather than in the data file so
+// campusPlaces.ts stays plain serialisable data.
+const categoryIcons: Record<string, ReactNode> = {
+  buildings: <BuildingIcon />,
+  library: <BookIcon />,
+  intlOffice: <UsersIcon />,
+  cafes: <TagIcon />,
+  groceries: <TagIcon />,
+  pharmacies: <HeartHandshakeIcon />,
+  atms: <TagIcon />,
+  mosques: <MapPinIcon />,
+  busStops: <MapPinIcon />,
+};
+
+function Campus() {
+  const { t, language } = useLanguage();
+
+  // A "Show on map" click in the accordion below sets the target pin id and
+  // bumps the nonce (so clicking the same pin twice still re-focuses it),
+  // then scrolls the map back into view.
+  const mapWrapRef = useRef<HTMLDivElement>(null);
+  const [focus, setFocus] = useState<{ id: string; nonce: number }>({ id: "", nonce: 0 });
+
+  const showOnMap = useCallback((id: string) => {
+    setFocus((prev) => ({ id, nonce: prev.nonce + 1 }));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    mapWrapRef.current?.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  }, []);
 
   return (
     <main className="py-20 md:py-28">
@@ -34,17 +57,32 @@ function Campus() {
           subtitle={t("campus.subtitle")}
         />
 
-        <div className="mt-12">
-          <CampusMap />
+        <div ref={mapWrapRef} className="mt-12 scroll-mt-24">
+          <Suspense
+            fallback={
+              <div className="h-[420px] w-full animate-pulse rounded-3xl border border-sand-200 bg-sand-100 dark:border-sand-700 dark:bg-sand-800" />
+            }
+          >
+            <UniSierMap focusPointId={focus.id} focusNonce={focus.nonce} />
+          </Suspense>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category) => (
-            <CategoryCard
-              key={category.key}
-              icon={category.icon}
-              title={category.title}
-              description={category.description}
+        {language !== "en" && (
+          <p className="mt-8 rounded-xl border border-sand-200 bg-sand-50 px-4 py-3 text-sm text-sand-600 dark:border-sand-700 dark:bg-sand-800/50 dark:text-sand-400">
+            {t("common.contentInEnglish")}
+          </p>
+        )}
+
+        <div className="mt-8 grid items-start gap-6 md:grid-cols-2">
+          {campusCategories.map((category) => (
+            <CampusCategory
+              key={category.id}
+              categoryId={category.id}
+              icon={categoryIcons[category.id]}
+              title={t(category.titleKey)}
+              description={t(category.descriptionKey)}
+              places={category.places}
+              onShowOnMap={showOnMap}
             />
           ))}
         </div>

@@ -6,13 +6,20 @@ import { useLanguage } from "../../hooks/useLanguage";
 function Hero() {
   const { t } = useLanguage();
 
+  function scrollToJourney() {
+    const section = document.getElementById("journey");
+    if (!section) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    section.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }
+
   return (
     <section className="relative overflow-hidden border-b border-sand-200/60 bg-sand-50 py-28 md:py-36 dark:border-sand-800/60 dark:bg-sand-900">
       {/* Aurora lighting */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="aurora -left-24 -top-32 h-96 w-96 bg-coral-400" />
         <div className="aurora right-0 top-10 h-80 w-80 bg-ember-300 [animation-delay:-6s]" />
-        <div className="aurora bottom-[-6rem] left-1/3 h-72 w-72 bg-teal-500/70 [animation-delay:-12s]" />
+        <div className="aurora bottom-[-6rem] left-1/3 h-72 w-72 bg-coral-600/60 [animation-delay:-12s]" />
       </div>
 
       {/* Fine grid wash */}
@@ -56,13 +63,17 @@ function Hero() {
           </div>
 
           <div className="animate-rise mt-10 flex flex-col justify-center gap-4 [animation-delay:0.2s] sm:flex-row">
-            <Button to="/guides" size="lg">
+            {/* "Get started" drops the student into the interactive journey
+                picker further down this page; "Explore guides" leaves for the
+                guides library. They used to both point at /guides. */}
+            <Button size="lg" onClick={scrollToJourney}>
               {t("hero.cta.primary")}
               <ArrowRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
 
             <Button to="/guides" variant="secondary" size="lg">
               {t("hero.cta.secondary")}
+              <ArrowRightIcon className="h-4 w-4 opacity-60 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
           </div>
 
